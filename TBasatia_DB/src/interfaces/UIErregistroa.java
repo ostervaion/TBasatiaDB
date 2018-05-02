@@ -128,6 +128,8 @@ public class UIErregistroa extends JFrame {
 				String pMota = (String)comboBox.getSelectedItem();
 				
 				KJ.insertDatuak(pEIzen, null, pIzen, pAbizen, pEmail, pJUrtea, pPasahitza, pMota);
+				UIHasiera.main(null);
+				UIErregistroa.this.dispose();
 			}
 		});
 		btnErregistratu.setBounds(185, 252, 89, 23);
@@ -174,7 +176,12 @@ public class UIErregistroa extends JFrame {
 		
 		comboBox.setToolTipText("");
 		comboBox.setBounds(336, 154, 86, 20);
-		comboBox.addItem("Jokalari");
+		if (KJ.erabiltzaileKop()==0) {
+			comboBox.addItem("Admin");
+			comboBox.addItem("Jokalari");
+		}else {
+			comboBox.addItem("Jokalari");
+		}
 		panel.add(comboBox);
 	}
 }

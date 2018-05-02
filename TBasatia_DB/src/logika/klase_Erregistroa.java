@@ -82,17 +82,32 @@ public class klase_Erregistroa {
 	}
 	
 	public int eMota (Jokalari pErabiltzaile) {
-		
-		PreparedStatement ps = null;
-		ResultSet rs = null;
-		
-		String sql = "SELECT EIZENA, IZENA, PASAHITZA, MOTA FROM JOKALARI WHERE EIZENA = ?";
-		
 		if(pErabiltzaile.getMota().equals("Jokalari")) {
 			return 1;
 		}else {
 			return 2;
 		}
+	}
+	
+	public int erabiltzaileKop() {
+		//Zenbat erabiltzaile erregistratuta dauden jakiteko.
+		//0 egotekotan, lehenengo erabiltzailea "Admin bezala erregistratzeko aukera edukiko du.
+		int emaitza = 0;
+		PreparedStatement ps = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT * FROM JOKALARI";
+		
+		try {
+			ps = K.getConnection().prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				emaitza++;
+			} 
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+		}
+		return emaitza;
 	}
 
 }

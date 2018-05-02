@@ -17,9 +17,6 @@ public class Konexioa {
 		try {
 			Class.forName(DRIVER);
 			conn = DriverManager.getConnection(URL, USER, PASSWORD);
-			if(conn != null) {
-				System.out.println("Konexioa egin da...");
-			}
 			
 		} catch (ClassNotFoundException | SQLException e) {
 			System.out.println("Errorea konektatzean" + e);
@@ -34,9 +31,6 @@ public class Konexioa {
 	//Metodo honen bidez base datutik deskonektatzen gara
 	public void deskonektatu() {
 		conn = null;
-		if(conn == null) {
-			System.out.println("Konexioa amaituta...");
-		}
 	}
 
 }
