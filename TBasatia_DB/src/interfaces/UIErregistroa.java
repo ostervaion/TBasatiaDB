@@ -178,7 +178,6 @@ public class UIErregistroa extends JFrame {
 		comboBox.setBounds(336, 154, 86, 20);
 		if (KJ.erabiltzaileKop()==0) {
 			comboBox.addItem("Admin");
-			comboBox.addItem("Jokalari");
 		}else {
 			comboBox.addItem("Jokalari");
 		}

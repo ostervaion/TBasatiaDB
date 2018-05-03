@@ -9,20 +9,23 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JTextField;
 
 public class UIJokalari extends JFrame {
 
 	private JPanel contentPane;
-
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
+			private Object testua;
+
 			public void run() {
 				try {
 					UIJokalari frame = new UIJokalari();
@@ -30,6 +33,11 @@ public class UIJokalari extends JFrame {
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
+			}
+
+			private void setIzena(String nickIzena) {
+				// TODO Auto-generated method stub
+				((JLabel) this.testua).setText(nickIzena);
 			}
 		});
 	}
@@ -70,6 +78,22 @@ public class UIJokalari extends JFrame {
 			}
 			
 		});
+		
+		JButton btnJokatu = new JButton("Jokatu");
+		btnJokatu.setBounds(174, 82, 89, 23);
+		panel.add(btnJokatu);
+		btnJokatu.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				System.out.println();
+			}
+		});
+		
+		JButton btnRankinga = new JButton("Ranking-a");
+		btnRankinga.setBounds(174, 121, 89, 23);
+		panel.add(btnRankinga);
+		
 	}
-
 }

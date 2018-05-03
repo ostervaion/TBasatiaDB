@@ -101,7 +101,7 @@ public class klase_Erregistroa {
 		try {
 			ps = K.getConnection().prepareStatement(sql);
 			rs = ps.executeQuery();
-			while (rs.next()) {
+			while (rs.next() && emaitza >0) {
 				emaitza++;
 			} 
 		} catch (SQLException e) {

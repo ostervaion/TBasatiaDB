@@ -136,4 +136,8 @@ public class UISesioaHasi extends JFrame {
 			
 		});
 	}
+	public String getIzena() {
+		String izena = textField.getText();
+		return izena;
+	}
 }
