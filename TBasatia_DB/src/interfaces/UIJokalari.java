@@ -6,6 +6,9 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import logika.klase_Jokoa;
+
 import javax.swing.JLabel;
 import javax.swing.SwingConstants;
 import java.awt.Font;
@@ -19,6 +22,7 @@ import javax.swing.JTextField;
 public class UIJokalari extends JFrame {
 
 	private JPanel contentPane;
+	private klase_Jokoa KJ = new klase_Jokoa();
 	/**
 	 * Launch the application.
 	 */
@@ -87,7 +91,8 @@ public class UIJokalari extends JFrame {
 			@Override
 			public void actionPerformed(ActionEvent e) {
 				// TODO Auto-generated method stub
-				System.out.println();
+				UIJokatu.main(null);
+				UIJokalari.this.dispose();
 			}
 		});
 		

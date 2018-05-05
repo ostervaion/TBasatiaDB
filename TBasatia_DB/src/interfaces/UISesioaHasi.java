@@ -9,6 +9,7 @@ import javax.swing.border.EmptyBorder;
 
 import klaseak.Jokalari;
 import logika.klase_Erregistroa;
+import logika.klase_sesioak;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -25,6 +26,7 @@ public class UISesioaHasi extends JFrame {
 	private JPanel contentPane;
 	private JTextField textField;
 	private JTextField textField_1;
+	private klase_sesioak KS = new klase_sesioak();
 
 	/**
 	 * Launch the application.
@@ -106,6 +108,8 @@ public class UISesioaHasi extends JFrame {
 					if (modSql.login(usr)) {
 						if (modSql.eMota(usr) == 1) {
 							UIJokalari.main(null);
+							KS.insertDatuak(textField.getText());
+							
 						}else {
 							UIAdmin.main(null);
 						}
