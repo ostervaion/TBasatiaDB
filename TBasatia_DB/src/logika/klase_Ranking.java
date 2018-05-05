@@ -39,12 +39,13 @@ public class klase_Ranking {
 	}
 	
 	public DefaultTableModel getDatuak(String pIzena, int pTmota) {
+		boolean amaituta = false;
 		try {
 			setIzenburu();
 			String SQL_SELECT_NIREA = "SELECT * FROM PARTIDA WHERE JIZENA='"+pIzena+"' ORDER BY PUNTUAK DESC LIMIT 5";
 			String SQL_SELECT_EGUNEKOAK = "SELECT * FROM PARTIDA WHERE DATA='"+data.toString()+"' ORDER BY PUNTUAK DESC LIMIT 5";
 			String SQL_SELECT_OROKORRA = "SELECT * FROM PARTIDA ORDER BY PUNTUAK DESC LIMIT 5";
-			String SQL_SELECT_BATAZBESTEKOA = "SELECT *, AVG(PUNTUAK) FROM PARTIDA GROUP BY JIZENA ORDER BY AVG(PUNTUAK) LIMIT 5";
+			String SQL_SELECT_BATAZBESTEKOA = "SELECT *, AVG(PUNTUAK) FROM PARTIDA GROUP BY JIZENA ORDER BY AVG(PUNTUAK) DESC LIMIT 5";
 			switch(pTmota) {
 				case 0:
 					PS = K.getConnection().prepareStatement(SQL_SELECT_NIREA);
@@ -57,15 +58,26 @@ public class klase_Ranking {
 					break;
 				case 3:
 					PS = K.getConnection().prepareStatement(SQL_SELECT_BATAZBESTEKOA);
+					RS = PS.executeQuery();
+					Object[] lerroa = new Object[3];
+					while(RS.next()) {
+						lerroa[0] = RS.getInt(9);
+						lerroa[1] = RS.getString(7);
+						lerroa[2] = RS.getDate(6);
+						DT.addRow(lerroa);
+						amaituta = true;
+					}
 					break;
 			}
-			RS = PS.executeQuery();
-			Object[] lerroa = new Object[3];
-			while(RS.next()) {
-				lerroa[0] = RS.getInt(8);
-				lerroa[1] = RS.getString(7);
-				lerroa[2] = RS.getDate(6);
-				DT.addRow(lerroa);
+			if (!amaituta) {
+				RS = PS.executeQuery();
+				Object[] lerroa = new Object[3];
+				while(RS.next()) {
+					lerroa[0] = RS.getInt(8);
+					lerroa[1] = RS.getString(7);
+					lerroa[2] = RS.getDate(6);
+					DT.addRow(lerroa);
+				}
 			}
 		}catch (SQLException e) {
 			System.out.println("Errorea datuak enlistatzean: " + e.getMessage());
