@@ -99,6 +99,15 @@ public class UIJokalari extends JFrame {
 		JButton btnRankinga = new JButton("Ranking-a");
 		btnRankinga.setBounds(174, 121, 89, 23);
 		panel.add(btnRankinga);
+		btnRankinga.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				UIRanking.main(null);
+				UIJokalari.this.dispose();
+			}
+		});
 		
 	}
 }

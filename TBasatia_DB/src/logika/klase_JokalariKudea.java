@@ -17,9 +17,11 @@ public class klase_JokalariKudea {
 	private DefaultTableModel DT;
 	private ResultSet RS;
 	
+	
 	public klase_JokalariKudea() {
 		PS = null;
 		K = new Konexioa();
+		DT = new DefaultTableModel();
 	}
 	
 	private DefaultTableModel setIzenburu() {
