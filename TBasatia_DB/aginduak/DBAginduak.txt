@@ -1,0 +1,36 @@
+MariaDB [TabernaBasati]> create table jokalari
+    -> (EIZENA VARCHAR(15) NOT NULL,
+    -> PRIMARY KEY(EIZENA),
+    -> EDATA DATE NOT NULL,
+    -> IZENA VARCHAR(15) NOT NULL,
+    -> ABIZENA VARCHAR(15) NOT NULL,
+    -> EMAIL VARCHAR(50) NOT NULL,
+    -> JURTEA INT(11) NOT NULL,
+    -> PASAHITZA VARCHAR(30) NOT NULL,
+    -> MOTA VARCHAR(15) NOT NULL);
+
+MariaDB [TabernaBasati]> CREATE TABLE kanimali
+    -> (AIZENA VARCHAR(15) NOT NULL,
+    -> PRIMARY KEY(AIZENA),
+    -> ZENBAKIA INT(11) NOT NULL,
+    -> AZALPENA VARCHAR(100),
+    -> JORIGINALA VARCHAR(1) NOT NULL,
+    -> PUNTUAK INT (11) NOT NULL);
+
+MariaDB [TabernaBasati]> CREATE TABLE sesioak
+    -> (SNICK VARCHAR(15) NOT NULL,
+    -> DATA DATE NOT NULL,
+    -> DENBORA TIME NOT NULL);
+
+MariaDB [TabernaBasati]> create table partida
+    -> (KODEA INT(11) NOT NULL,
+    -> EMAITZA VARCHAR(15),
+    -> KOLOREA VARCHAR(15),
+    -> HORDUA TIME,
+    -> BORDUA TIME,
+    -> DATA DATE,
+    -> JIZENA VARCHAR(15) NOT NULL,
+    -> PUNTUAK INT(11),
+    -> PRIMARY KEY(KODEA),
+    -> FOREIGN KEY(JIZENA) REFERENCES jokalari(EIZENA)
+    -> ON UPDATE CASCADE);
